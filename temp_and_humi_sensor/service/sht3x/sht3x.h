@@ -32,6 +32,7 @@ struct SHT3x_t {
 	float temperature;
 	bool (*readTempHum)(SHT3x *p_sht);
 	bool (*writeCommand)(SHT3x *p_sht, uint16_t cmd);
+	void (*readbytes)(SHT3x *p_sht, uint8_t *buff, uint16_t length);
 };
 
 bool SHT_begin(SHT3x *p_sht);

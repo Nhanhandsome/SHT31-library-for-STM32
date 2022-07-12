@@ -9,8 +9,16 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include temp_and_humi_sensor/service/subdir.mk
+-include temp_and_humi_sensor/service/sht3x/subdir.mk
+-include temp_and_humi_sensor/service/sht2x/subdir.mk
 -include temp_and_humi_sensor/bsp/subdir.mk
+-include FreeModbus/freemodbus/port/subdir.mk
+-include FreeModbus/freemodbus/modbus/tcp/subdir.mk
+-include FreeModbus/freemodbus/modbus/rtu/subdir.mk
+-include FreeModbus/freemodbus/modbus/functions/subdir.mk
+-include FreeModbus/freemodbus/modbus/ascii/subdir.mk
+-include FreeModbus/freemodbus/modbus/subdir.mk
+-include FreeModbus/freemodbus/app/subdir.mk
 -include Drivers/STM32L0xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk

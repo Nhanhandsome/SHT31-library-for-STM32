@@ -1,0 +1,8 @@
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:80:1:eMBRTUInit	32	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:125:1:eMBRTUStart	8	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:141:1:eMBRTUStop	8	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:150:1:eMBRTUReceive	32	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:187:1:eMBRTUSend	32	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:226:1:xMBRTUReceiveFSM	16	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:286:1:xMBRTUTransmitFSM	24	static
+../FreeModbus/freemodbus/modbus/rtu/mbrtu.c:324:1:xMBRTUTimerT35Expired	24	static

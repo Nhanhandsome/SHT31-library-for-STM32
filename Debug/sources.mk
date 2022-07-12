@@ -24,6 +24,14 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32L0xx_HAL_Driver/Src \
+FreeModbus/freemodbus/app \
+FreeModbus/freemodbus/modbus/ascii \
+FreeModbus/freemodbus/modbus/functions \
+FreeModbus/freemodbus/modbus \
+FreeModbus/freemodbus/modbus/rtu \
+FreeModbus/freemodbus/modbus/tcp \
+FreeModbus/freemodbus/port \
 temp_and_humi_sensor/bsp \
-temp_and_humi_sensor/service \
+temp_and_humi_sensor/service/sht2x \
+temp_and_humi_sensor/service/sht3x \
 

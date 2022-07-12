@@ -10,7 +10,7 @@
 
 static bool read_temp_humi_imlp(SHT3x *p_sht);
 static bool write_command(SHT3x *p_sht, uint16_t cmd);
-static void SHT_read_bytes(SHT3x *p_sht, uint8_t *buff, uint16_t length);
+static void read_bytes_imlp(SHT3x *p_sht, uint8_t *buff, uint16_t length);
 static uint8_t crc8(const uint8_t *data, int len);
 
 bool SHT_begin(SHT3x *p_sht) {
@@ -19,6 +19,7 @@ bool SHT_begin(SHT3x *p_sht) {
 	p_sht->temperature = 0;
 	p_sht->readTempHum = read_temp_humi_imlp;
 	p_sht->writeCommand = write_command;
+	p_sht->readbytes = read_bytes_imlp;
 	return true;
 }
 float SHT_read_temp(SHT3x *p_sht) {
@@ -30,7 +31,7 @@ float SHT_read_humi(SHT3x *p_sht) {
 uint16_t SHT_read_status(SHT3x *p_sht) {
 	p_sht->writeCommand(p_sht, SHT31_READSTATUS);
 	uint8_t data[3];
-	SHT_read_bytes(p_sht, data, 3);
+	p_sht->readbytes(p_sht, data, 3);
 	uint16_t stat = data[0];
 	stat <<= 8;
 	stat |= data[1];
@@ -55,7 +56,7 @@ void SHT_mesure(SHT3x *p_sht){
 static bool read_temp_humi_imlp(SHT3x *p_sht) {
 	uint8_t readbuffer[6];
 	p_sht->writeCommand(p_sht, SHT31_MEAS_HIGHREP);
-	SHT_read_bytes(p_sht, readbuffer, sizeof(readbuffer));
+	p_sht->readbytes(p_sht, readbuffer, sizeof(readbuffer));
 	if (readbuffer[2] != crc8(readbuffer, 2)
 			|| readbuffer[5] != crc8(readbuffer + 3, 2))
 		return false;
@@ -80,7 +81,7 @@ static bool write_command(SHT3x *p_sht, uint16_t cmd) {
 	i2c_write(p_sht->addr,(uint8_t*)data, sizeof(data));
 	return true;
 }
-static void SHT_read_bytes(SHT3x *p_sht, uint8_t *buff, uint16_t length) {
+static void read_bytes_imlp(SHT3x *p_sht, uint8_t *buff, uint16_t length) {
 	i2c_read(p_sht->addr, buff, length);
 }
 static uint8_t crc8(const uint8_t *data, int len) {

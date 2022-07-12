@@ -1,0 +1,2 @@
+../FreeModbus/freemodbus/port/portcritial.c:15:6:__critical_enter	8	static,ignoring_inline_asm
+../FreeModbus/freemodbus/port/portcritial.c:21:6:__critical_exit	8	static,ignoring_inline_asm
